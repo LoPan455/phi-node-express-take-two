@@ -10,7 +10,7 @@ $(document).ready(function(){
         console.log('response', response);
         $('#fishTank').empty();
         for (var i = 0; i < response.length; i++) {
-          $('#fishTank').append('<li>' + response[i].name + '</li>');
+          $('#fishTank').append('<li><strong>Fish Name</strong>: ' + response[i].name + ' <strong>Date Added</strong>: ' + response[i].dateAdded + '</li>');
         }
       }
     });
@@ -28,7 +28,9 @@ $(document).ready(function(){
   $('#newFishButton').on('click', function(){
     console.log('newFishButton pressed');
     var newFishObject = {};
+    var dateAdded = new Date();
     newFishObject.name = $('#newFishName').val();
+    newFishObject.dateAdded = dateAdded.toDateString();
     $.ajax({
       type: 'POST',
       url: '/fish/new',

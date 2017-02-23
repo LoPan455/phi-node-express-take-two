@@ -41,7 +41,9 @@ app.post('/fish/new', function(req, res){
   if (blankNameCheck(newFish) == true || dupeCheck(newFish,fishiesList) == true){
   res.sendStatus(400);
 } else {
+
   fishiesList.push(newFish);
+  console.log('fishiesList now looks like: ',fishiesList);
   res.sendStatus(200);
 }
 });
