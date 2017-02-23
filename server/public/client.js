@@ -20,7 +20,7 @@ $(document).ready(function(){
       url: '/fish/first/name',
       success: function(response) {
         console.log('response', response);
-        $('#firstFishy').text(response);
+        $('#fishiesName').text(response);
       }
     });
   }
