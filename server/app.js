@@ -3,6 +3,7 @@ console.log('Starting up the server');
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var inputValidationLogic = require('./utils/inputValidationLogic.js');
 
 app.use(express.static('server/public'));
 
@@ -38,7 +39,7 @@ app.get('/fish/last/name', function(req, res){
 
 app.post('/fish/new', function(req, res){
   var newFish = req.body;
-  if (blankNameCheck(newFish) == true || dupeCheck(newFish,fishiesList) == true){
+  if (inputValidationLogic.blankNameCheck(newFish) == true || inputValidationLogic.dupeCheck(newFish,fishiesList) == true){
   res.sendStatus(400);
 } else {
 
@@ -49,21 +50,21 @@ app.post('/fish/new', function(req, res){
 });
 
 
-function dupeCheck(fish,array){
-  for (var i = 0; i < array.length; i++) {
-    if(array[i].name == fish.name){
-      console.log('input error: dupe');
-      return true;
-    }
-  }
-}
-
-function blankNameCheck(fish,isBlank){
-  if(fish.name == ''){
-    console.log('input error: blank');
-    return true;
-  }
-}
+// function dupeCheck(fish,array){
+//   for (var i = 0; i < array.length; i++) {
+//     if(array[i].name == fish.name){
+//       console.log('input error: dupe');
+//       return true;
+//     }
+//   }
+// }
+//
+// function blankNameCheck(fish,isBlank){
+//   if(fish.name == ''){
+//     console.log('input error: blank');
+//     return true;
+//   }
+// }
 
 
   app.listen(5000);
