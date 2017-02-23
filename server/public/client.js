@@ -26,6 +26,7 @@ $(document).ready(function(){
   }
 
   $('#newFishButton').on('click', function(){
+    console.log('newFishButton pressed');
     var newFishObject = {};
     newFishObject.name = $('#newFishName').val();
     $.ajax({

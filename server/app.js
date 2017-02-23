@@ -38,17 +38,31 @@ app.get('/fish/last/name', function(req, res){
 
 app.post('/fish/new', function(req, res){
   var newFish = req.body;
-  if(newFish.name == ''){
-    res.sendStatus(400);
-    console.log('user submission failure: empty');
-  }
-  for (var i = 0; i < fishiesList.length; i++) {
-    if(fishiesList[i].name == newFish.name){
-      res.sendStatus(400);
-      console.log('user submission failure: dupe');
-    }
-  }
+  if (blankNameCheck(newFish) == true || dupeCheck(newFish,fishiesList) == true){
+  res.sendStatus(400);
+} else {
+  fishiesList.push(newFish);
+  res.sendStatus(200);
+}
 });
 
 
-app.listen(5000);
+function dupeCheck(fish,array){
+  for (var i = 0; i < array.length; i++) {
+    if(array[i].name == fish.name){
+      console.log('input error: dupe');
+      return true;
+    }
+  }
+}
+
+function blankNameCheck(fish,isBlank){
+  if(fish.name == ''){
+    console.log('input error: blank');
+    return true;
+  }
+}
+
+
+  app.listen(5000);
+  //end of file
