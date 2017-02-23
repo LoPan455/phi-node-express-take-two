@@ -3,15 +3,19 @@
   <head>
     <meta charset="utf-8">
     <title>Express Take 2</title>
-    <script src="vendors/jquery.js" charset="utf-8"></script>
-    <script src="scripts/client.js" charset="utf-8"></script>
+    <script src="jquery.js" charset="utf-8"></script>
+    <script src="client.js" charset="utf-8"></script>
   </head>
   <body>
-    <h1>Express Yourself Again</h1>
-    <h2>The first fish is:<span id="firstFishy"></span></h2>
-    <input id="newFishName">
-    <button id="newFishButton">Click here to add the fish!</button>
+    <h1>express yourself again!</h1>
+    <input type="text" id="newFishName" name="newFishName" value="fish name">
+    <button type="button" id="newFishButton" name="button">Click here to add the fish!</button>
+    <h1>The first name of the fishy in fishiesList is <span id="fishiesName"></span></h1>
     <ul id="fishTank">
     </ul>
+    <div>
+      <h2>Your addition was a total <span id="statusMessage"></span></h2>
+
+    </div>
   </body>
 </html>

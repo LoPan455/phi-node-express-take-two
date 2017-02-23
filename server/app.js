@@ -38,8 +38,14 @@ app.get('/fish/last/name', function(req, res){
 
 app.post('/fish/new', function(req, res){
   var newFish = req.body;
+  if(newFish.name !== ''){
+  console.log('new fish is:', newFish);
   fishiesList.push(newFish);
   res.sendStatus(200);
+} else {
+  res.sendStatus(400);
+  console.log('user submission failure');
+}
 });
 
 
